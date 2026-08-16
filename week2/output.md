@@ -54,6 +54,3 @@
 ## Task 4 — Conceptual ERD
 
 ![Conceptual ERD](erd.png)
-## Task 4 — Conceptual ERD
-
-![Conceptual ERD](erd.png)![alt text](image.png)

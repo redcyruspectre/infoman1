@@ -2,4 +2,4 @@ Installing MySQL Server 9.7.2 shows a main advantage of using databases instead 
 
 This setup leads to the first key job of a database administrator: keeping data safe and controlling who can see it. As soon as real student info—like names, IDs, and grades—is added to infoman1_2510818, protecting it becomes very important. An administrator must set user permissions right away so only approved people can read or change sensitive information.
 
-Here, Topic 1 and Topic 2 go hand in hand: the same feature that makes databases better than basic file systems—shared,  central access—is what creates the need for strong security. Without good access controls, the database's biggest strength can quickly become its biggest risk.
+Here, Topic 1 and Topic 2 go hand in hand: the same feature that makes databases better than basic file systems—shared, central access—is what creates the need for strong security. Without good access controls, the database's biggest strength can quickly become its biggest risk.

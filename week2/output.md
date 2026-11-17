@@ -9,7 +9,6 @@
 |---|---|
 | Customer | The scenario states that "the shop has many customers" who bring in cars for repair, making Customer an independent participant with its own distinct identity. |
 | Car | The scenario specifies that "each car has a model, a plate number, and a color, and belongs to exactly one customer," giving Car its own tracking attributes separate from its owner. |
-| Mechanic | The scenario notes that "the shop employs several mechanics, each with a name and a specialty," establishing Mechanic as a distinct entity that exists independently of any single repair visit. |
 | Service Appointment | The scenario states that "a mechanic works on it during a scheduled service appointment" and "each service appointment has a date and a short repair note," making it a distinct event entity that records each service visit. |
 
 ## Task 2 — Attributes per Entity
@@ -50,6 +49,7 @@
 | scheduled for | Car ↔ Service Appointment | 1:N | Yes — one car may be brought in for many service appointments over different visits, while each service appointment is scheduled for one specific car. |
 | performs | Mechanic ↔ Service Appointment | 1:N | Yes — one mechanic may work on many service appointments over time, while each service appointment is handled by one assigned mechanic. |
 | services | Mechanic ↔ Car | M:N | Yes — one mechanic may work on many different cars over time, and one car may be serviced by different mechanics on different visits (resolved through Service Appointment). |
+| Mechanic | The scenario notes that "the shop employs several mechanics, each with a name and a specialty," establishing Mechanic as a distinct entity that exists independently of any single repair visit. |
 
 ## Task 4 — Conceptual ERD
 

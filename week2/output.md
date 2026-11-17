@@ -1,59 +1,59 @@
-# INFOMAN1 — Week 2 Lab Output
-
+# INFOMAN1 – Week 2 Lab: Conceptual ERD Case Study
 **Name:** Red Cyrus Oloresisimo
 **Student ID:** 2510818
 **Section:** BSIT-II
-
----
 
 ## Task 1 — Candidate Entities
 
 | Entity | Justification |
 |---|---|
-| `Customer` | The scenario states "the shop has many **customers**," making Customer a core, independently identifiable entity with its own data (not just a descriptor of another entity). |
-| `Car` | The scenario states "each customer may bring in one or more **cars** for repair" and each car has distinct attributes (model, plate number, color), confirming it is a standalone entity. |
-| `Mechanic` | The scenario states "the shop employs several **mechanics**, each with a name and a specialty," establishing Mechanic as an independent entity with unique identifying information. |
-| `Service Appointment` | The scenario describes "a scheduled **service appointment**" with its own date and repair note, and it serves as the associative entity resolving the many-to-many relationship between Car and Mechanic. |
+| Customer | The scenario states that "the shop has many customers" who bring in cars for repair, making Customer an independent participant with its own distinct identity. |
+| Car | The scenario specifies that "each car has a model, a plate number, and a color, and belongs to exactly one customer," giving Car its own tracking attributes separate from its owner. |
+| Mechanic | The scenario notes that "the shop employs several mechanics, each with a name and a specialty," establishing Mechanic as a distinct entity that exists independently of any single repair visit. |
+| Service Appointment | The scenario states that "a mechanic works on it during a scheduled service appointment" and "each service appointment has a date and a short repair note," making it a distinct event entity that records each service visit. |
 
----
-
-## Task 2 — Attributes, Primary Keys & Domains
+## Task 2 — Attributes per Entity
 
 ### Customer
-- **`customer_id`** *(Primary Key)* — Domain: positive integer, auto-incremented, unique per customer
-- **`full_name`** — Domain: string (alphabetic characters and spaces, max 100 chars)
-- `contact_number` — Domain: string (numeric digits, 10–15 chars, e.g. phone number)
+- Primary Key: `customer_id`
+- Attributes:
+  - `customer_id` — Domain: numeric integer, auto-generated
+  - `full_name` — Domain: text string (alphabetic characters and spaces)
+  - `contact_number` — Domain: text string, valid phone format (10–15 digits)
 
 ### Car
-- **`car_id`** *(Primary Key)* — Domain: positive integer, auto-incremented, unique per car
-- **`plate_number`** — Domain: string (alphanumeric, format per local LTO standard, e.g. `ABC 123`)
-- `model` — Domain: string (alphanumeric, e.g. "Toyota Vios 2020", max 100 chars)
-- `color` — Domain: string (alphabetic, e.g. "Red", "Metallic Gray", max 50 chars)
+- Primary Key: `plate_number`
+- Attributes:
+  - `plate_number` — Domain: alphanumeric string (e.g., `'ABC-1234'`)
+  - `model` — Domain: text string (e.g., `'Toyota Vios'`)
+  - `color` — Domain: text string (e.g., `'Black'`, `'Silver'`)
 
 ### Mechanic
-- **`mechanic_id`** *(Primary Key)* — Domain: positive integer, auto-incremented, unique per mechanic
-- **`name`** — Domain: string (alphabetic characters and spaces, max 100 chars)
-- `specialty` — Domain: string from an enumerated set (e.g. `engine`, `brakes`, `electrical`, `transmission`)
+- Primary Key: `mechanic_id`
+- Attributes:
+  - `mechanic_id` — Domain: numeric integer, auto-generated
+  - `name` — Domain: text string
+  - `specialty` — Domain: text string (e.g., `'engine'`, `'brakes'`, `'electrical'`)
 
 ### Service Appointment
-- **`appointment_id`** *(Primary Key)* — Domain: positive integer, auto-incremented, unique per appointment
-- **`date`** — Domain: valid calendar date (DATE type, format YYYY-MM-DD, no future limit)
-- `repair_note` — Domain: string (free text, max 500 chars describing the repair performed)
+- Primary Key: `appointment_id`
+- Attributes:
+  - `appointment_id` — Domain: numeric integer, auto-generated
+  - `date` — Domain: calendar date (`YYYY-MM-DD`)
+  - `repair_note` — Domain: text string (short summary of repair work done)
 
----
+## Task 3 — Relationships
 
-## Task 3 — Relationships & Cardinality
-
-| Relationship | Verb Phrase | Cardinality | Proof (Both Directions) |
+| Relationship (verb phrase) | Between | Cardinality | Checked both directions? |
 |---|---|---|---|
-| Customer → Car | **owns** | `1:N` | One **Customer** can own many **Cars**; each **Car** belongs to exactly one **Customer** (scenario: "belongs to exactly one customer"). |
-| Car → Service Appointment | **scheduled for** | `1:N` | One **Car** can have many **Service Appointments** (scenario: "one car may be serviced by different mechanics on different visits"); each **Service Appointment** is for exactly one **Car**. |
-| Mechanic → Service Appointment | **performs** | `1:N` | One **Mechanic** can perform many **Service Appointments** (scenario: "one mechanic may work on many different cars over time"); each **Service Appointment** is performed by exactly one **Mechanic**. |
-
-> **Note:** The M:N relationship between Car and Mechanic (a car can be serviced by many mechanics; a mechanic can service many cars) is resolved by the `Service Appointment` associative entity, decomposing it into two 1:N relationships.
-
----
+| owns | Customer ↔ Car | 1:N | Yes — one customer may bring in one or more cars for repair, while each car belongs to exactly one customer. |
+| scheduled for | Car ↔ Service Appointment | 1:N | Yes — one car may be brought in for many service appointments over different visits, while each service appointment is scheduled for one specific car. |
+| performs | Mechanic ↔ Service Appointment | 1:N | Yes — one mechanic may work on many service appointments over time, while each service appointment is handled by one assigned mechanic. |
+| services | Mechanic ↔ Car | M:N | Yes — one mechanic may work on many different cars over time, and one car may be serviced by different mechanics on different visits (resolved through Service Appointment). |
 
 ## Task 4 — Conceptual ERD
 
 ![Conceptual ERD](erd.png)
+## Task 4 — Conceptual ERD
+
+![Conceptual ERD](erd.png)![alt text](image.png)
